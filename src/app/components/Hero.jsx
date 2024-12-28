@@ -1,6 +1,4 @@
-// components/Heroo.js
 "use client";
-
 import Image from "next/image";
 import Hero from "../img/Navbar/Black Minimalist Modern Best Fast Food Instagram Post.png";
 import { useEffect, useState } from "react";
@@ -11,38 +9,40 @@ export const Heroo = () => {
   const [error, setError] = useState(null);
 
   // Fetching data from the API
-  useEffect(() => {
-    const CardsData = async () => {
-      try {
-        const response = await fetch(
-          "https://foodbackhand.vercel.app/getOderDeatils"
-        );
-        const data = await response.json();
-        if (data && Array.isArray(data)) {
-          setData(data);
-          setError(null);
-        } else {
-          throw new Error("Invalid data structure");
-        }
-      } catch (err) {
-        setError("Failed to fetch deals. Please try again later.");
-        console.error("Error fetching data:", err);
+  const CardsData = async () => {
+    try {
+      const response = await fetch(
+        "https://foodbackhand.vercel.app/getOderDeatils"
+      );
+      const data = await response.json();
+      if (data && Array.isArray(data)) {
+        setData(data);
+        setError(null);
+      } else {
+        throw new Error("Invalid data structure");
       }
-    };
+    } catch (err) {
+      setError("Failed to fetch deals. Please try again later.");
+      console.error("Error fetching data:", err);
+    }
+  };
 
+  useEffect(() => {
     CardsData(); // Call the function when the component mounts
   }, []);
 
   return (
-    <div className="mt-32">
-      <Image
-        src={Hero}
-        alt="Hero Image"
-        layout="responsive"
-        width={1200}
-        height={600}
-        className="w-full"
-      />
+    <>
+      <div className="mt-32">
+        <Image
+          src={Hero}
+          alt="Hero Image"
+          layout="responsive"
+          width={1200}
+          height={600}
+          className="w-full"
+        />
+      </div>
 
       <div className="bg-black min-h-screen p-4">
         <div className="max-w-4xl mx-auto">
@@ -68,7 +68,7 @@ export const Heroo = () => {
 
                     <Link
                       href={{
-                        pathname: "/PlaceOrder",
+                        pathname: `/PlaceOder`,
                         query: {
                           title: deal.title,
                           category: deal.category,
@@ -86,11 +86,7 @@ export const Heroo = () => {
 
                   <div className="mt-4 md:mt-0">
                     <Image
-                      src={
-                        deal.image?.startsWith("http")
-                          ? deal.image
-                          : "/fallback-image.png"
-                      }
+                      src={deal.image?.startsWith("http") ? deal.image : "/fallback-image.png"}
                       alt={`Image showcasing ${deal.title}`}
                       width={100}
                       height={100}
@@ -100,11 +96,13 @@ export const Heroo = () => {
                 </div>
               ))
             ) : (
-              <p className="text-white text-center">Please Wait...</p>
+              <p className="text-white text-center">
+                Please Wait...
+              </p>
             )}
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
