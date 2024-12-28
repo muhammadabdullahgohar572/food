@@ -1,35 +1,28 @@
-"use client";
+'use client';
 
+import { Suspense } from "react";  // Import Suspense
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 export default function PlaceOrder() {
   const searchParams = useSearchParams();
 
-  const [title, setTitle] = useState("Chicken Corn Soup");
-  const [prices, setPrices] = useState("Rs. 299");
-  const [image, setImage] = useState("/placeholder.svg");
+  const title = searchParams.get("title") || "Chicken Corn Soup";
+  const prices = searchParams.get("prices") || "Rs. 299";
+  const image = searchParams.get("image") || "/placeholder.svg";
 
-  // Handle the client-side data fetching or initialization
-  useEffect(() => {
-    const fetchedTitle = searchParams.get("title") || "Chicken Corn Soup";
-    const fetchedPrices = searchParams.get("prices") || "Rs. 299";
-    const fetchedImage = searchParams.get("image") || "/placeholder.svg";
-
-    setTitle(fetchedTitle);
-    setPrices(fetchedPrices);
-    setImage(fetchedImage);
-  }, [searchParams]);
-
+  // Extract numeric value from prices string (e.g. "Rs. 299" -> 299)
   const price = parseInt(prices.replace(/[^\d]/g, ''), 10);
+
   const [Increase, setincrese] = useState(0);
 
+  // Calculate total price
   const total = price * Increase + 100; // Rs. 100 delivery charge
 
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>  {/* Suspense Boundary */}
       <div className="min-h-screen md:mt-[12%] mt-[35%] ssml:mt-[17%] bg-black text-white p-4">
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
           {/* Left Image Section */}
@@ -147,6 +140,6 @@ export default function PlaceOrder() {
           </div>
         </div>
       </div>
-    </>
+    </Suspense>
   );
 }
