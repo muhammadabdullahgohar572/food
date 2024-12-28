@@ -12,7 +12,10 @@ export default function PlaceOrder() {
   const prices = searchParams.get("prices") || "Rs. 299";
   const image = searchParams.get("image") || "/placeholder.svg";
 
-  const [Increase, setincrese] = useState(0);
+  const [Increase, setIncrease] = useState(0);
+
+  // Parsing the price to a number for calculations
+  const parsedPrice = parseInt(prices.replace(/[^\d]/g, ''), 10);
 
   return (
     <>
@@ -109,7 +112,7 @@ export default function PlaceOrder() {
                 <button
                   onClick={() => {
                     if (Increase > 0) {
-                      setincrese(Increase - 1);
+                      setIncrease(Increase - 1);
                     }
                   }}
                   aria-label="Decrease quantity"
@@ -119,7 +122,7 @@ export default function PlaceOrder() {
                 </button>
                 <span className="w-12 text-center">{Increase}</span>
                 <button
-                  onClick={() => setincrese(Increase + 1)}
+                  onClick={() => setIncrease(Increase + 1)}
                   aria-label="Increase quantity"
                   className="p-2 text-white bg-gray-800 hover:bg-gray-700 rounded-r-md"
                 >
@@ -127,7 +130,7 @@ export default function PlaceOrder() {
                 </button>
               </div>
               <button className="flex-1 p-3 bg-red-600 hover:bg-red-700 rounded-md">
-                Oder Now - Rs -{prices * Increase + 100}
+                Oder Now - Rs {parsedPrice * Increase + 100}
               </button>
             </div>
           </div>
