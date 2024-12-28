@@ -2,22 +2,30 @@
 
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function PlaceOrder() {
   const searchParams = useSearchParams();
 
-  const title = searchParams.get("title") || "Chicken Corn Soup";
-  const prices = searchParams.get("prices") || "Rs. 299";
-  const image = searchParams.get("image") || "/placeholder.svg";
+  const [title, setTitle] = useState("Chicken Corn Soup");
+  const [prices, setPrices] = useState("Rs. 299");
+  const [image, setImage] = useState("/placeholder.svg");
 
-  // Extract numeric value from prices string (e.g. "Rs. 299" -> 299)
-  const price = parseInt(prices.replace(/[^\d]/g, ''), 10) || 0;
+  // Handle the client-side data fetching or initialization
+  useEffect(() => {
+    const fetchedTitle = searchParams.get("title") || "Chicken Corn Soup";
+    const fetchedPrices = searchParams.get("prices") || "Rs. 299";
+    const fetchedImage = searchParams.get("image") || "/placeholder.svg";
 
-  const [Increase, setIncrease] = useState(0);
+    setTitle(fetchedTitle);
+    setPrices(fetchedPrices);
+    setImage(fetchedImage);
+  }, [searchParams]);
 
-  // Calculate total price
+  const price = parseInt(prices.replace(/[^\d]/g, ''), 10);
+  const [Increase, setincrese] = useState(0);
+
   const total = price * Increase + 100; // Rs. 100 delivery charge
 
   return (
@@ -115,7 +123,7 @@ export default function PlaceOrder() {
                 <button
                   onClick={() => {
                     if (Increase > 0) {
-                      setIncrease(Increase - 1);
+                      setincrese(Increase - 1);
                     }
                   }}
                   aria-label="Decrease quantity"
@@ -125,7 +133,7 @@ export default function PlaceOrder() {
                 </button>
                 <span className="w-12 text-center">{Increase}</span>
                 <button
-                  onClick={() => setIncrease(Increase + 1)}
+                  onClick={() => setincrese(Increase + 1)}
                   aria-label="Increase quantity"
                   className="p-2 text-white bg-gray-800 hover:bg-gray-700 rounded-r-md"
                 >
