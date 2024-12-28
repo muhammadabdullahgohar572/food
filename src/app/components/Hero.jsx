@@ -6,15 +6,13 @@ import Winder from "../img/winter/1734515477-banner-soup.webp";
 import soup from "../img/Navbar/1734515294-chk-corn-soup.webp";
 import express from "../img/winter/1730536763-ZINGO-WITH-DRINK.webp";
 import borast from "../img/winter/1734865685-broast-2.webp";
-
-import no1 from "../img/winter/all/1686207532-3.webp";
+import no1 from "../img/winter/all/1686207532-3 (1).webp";
 import no2 from "../img/winter/all/1686209389-Beef%20Burger.webp";
-import no3 from "../img/winter/all/1686210160-Tikkah%20Boti.webp";
 import no4 from "../img/winter/all/1686210299-Chicken20roll.webp";
-import no5 from "../img/winter/all/1686211861-Bihari%20Boti.webp";
-import no7 from "../img/winter/all/1730550079-LEMON%20250ML.webp";
+import no5 from "../img/winter/all/1686207461-1.webp";
+import no7 from "../img/winter/all/1686211569-Reshmi%20kabab.webp";
 import no6 from "../img/winter/all/1730550079-LEMON%20250ML.webp";
-
+import no3 from "../img/winter/all/1686207532-3 (1).webp";
 
 export const Heroo = () => {
   const deals = [
@@ -195,49 +193,49 @@ export const Heroo = () => {
       price: "Rs. 499",
       description:
         "Classic Italian pasta served with a rich and savory meat sauce.",
-      image: no2,
+      image: no3,
     },
     {
       name: "Chicken Alfredo",
       price: "Rs. 559",
       description:
         "Creamy Alfredo sauce served with grilled chicken and fettuccine pasta.",
-      image: no2,
+      image: no3,
     },
     {
       name: "Penne Arrabbiata",
       price: "Rs. 459",
       description:
         "Spicy tomato sauce with garlic, olive oil, and red chili served with penne pasta.",
-      image: no2,
+      image: no3,
     },
     {
       name: "Mac & Cheese",
       price: "Rs. 399",
       description:
         "Cheesy pasta baked to perfection, topped with a crispy golden crust.",
-      image: no2,
+      image: no3,
     },
     {
       name: "Lasagna",
       price: "Rs. 649",
       description:
         "Layered pasta with rich meat sauce, béchamel, and melted cheese.",
-      image: no2,
+      image: no3,
     },
     {
       name: "Pasta Primavera",
       price: "Rs. 499",
       description:
         "Fresh vegetables sautéed in olive oil with a light garlic and herb sauce.",
-      image: no2,
+      image: no3,
     },
     {
       name: "Shrimp Scampi",
       price: "Rs. 599",
       description:
         "Pasta with shrimp cooked in a garlic butter sauce with a hint of lemon.",
-      image: no2,
+      image: no3,
     },
   ];
 
@@ -408,42 +406,42 @@ export const Heroo = () => {
       price: "Rs. 499",
       description:
         "Spicy and flavorful minced beef skewers, grilled over charcoal.",
-      image: no6,
+      image: no7,
     },
     {
       name: "Malai Boti",
       price: "Rs. 649",
       description:
         "Creamy, tender chicken cubes with mild spices, cooked over flames.",
-      image: no6,
+      image: no7,
     },
     {
       name: "Chicken Reshmi Kebab",
       price: "Rs. 549",
       description:
         "Delicate, melt-in-your-mouth chicken kebabs with a rich flavor.",
-      image: no6,
+      image: no7,
     },
     {
       name: "Beef Bihari Boti",
       price: "Rs. 699",
       description:
         "Thinly sliced beef marinated with spices and grilled to perfection.",
-      image: no6,
+      image: no7,
     },
     {
       name: "Grilled Prawns",
       price: "Rs. 899",
       description:
         "Fresh prawns marinated in BBQ spices and grilled till tender.",
-      image: no6,
+      image: no7,
     },
     {
       name: "Mutton Chops",
       price: "Rs. 849",
       description:
         "Succulent mutton chops marinated in BBQ spices and grilled over a flame.",
-      image: no6,
+      image: no7,
     },
   ];
 
@@ -522,6 +520,7 @@ export const Heroo = () => {
       price: "Rs. 599",
     },
   ];
+
   return (
     <>
       <div className="mt-32">
@@ -699,19 +698,6 @@ export const Heroo = () => {
         </div>
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
       <div className="bg-black min-h-screen p-4">
         <div className="max-w-4xl  mx-auto">
           <h1 className="text-white  text-center text-2xl font-bold mb-4">
@@ -752,10 +738,6 @@ export const Heroo = () => {
           </div>
         </div>
       </div>
-
-
-
-
 
       <div className="bg-black min-h-screen p-4">
         <div className="max-w-4xl  mx-auto">

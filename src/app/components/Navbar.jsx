@@ -25,21 +25,6 @@ export const Navbar = () => {
             </div>
           </button>
 
-          {/* Submit Complaint Button */}
-          <button className="relative w-36 h-14 text-white bg-gradient-to-br from-yellow-500 to-pink-600 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-            <span className="absolute inset-1 bg-black opacity-60 rounded-lg"></span>
-            <div className="relative z-10 flex items-center justify-center font-bold">
-              Submit your complaint
-            </div>
-          </button>
-
-          {/* Location Button */}
-          <button className="relative w-36 h-12 text-white bg-gradient-to-br from-yellow-500 to-pink-600 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-            <span className="absolute inset-1 bg-black opacity-60 rounded-lg"></span>
-            <div className="relative z-10 flex items-center justify-center font-extrabold">
-              <i className="fa-solid fa-location-dot mr-2"></i>Your Location
-            </div>
-          </button>
           <Link href="../page/About">
             <button className="relative w-36 h-12 text-white bg-gradient-to-br from-yellow-500 to-pink-600 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
               <span className="absolute inset-1 bg-black opacity-60 rounded-lg"></span>
@@ -57,8 +42,27 @@ export const Navbar = () => {
               </div>
             </button>
           </Link>
+         
+         <Link href="../page/login">
+        
+          <button className="relative w-36 h-14 text-white bg-gradient-to-br from-yellow-500 to-pink-600 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+            <span className="absolute inset-1 bg-black opacity-60 rounded-lg"></span>
+            <div className="relative z-10 flex items-center justify-center font-bold">
+              Login
+            </div>
+          </button>
+          </Link>
+                 
+          <Link href="../page/sigup">
 
-          {/* Cart Button */}
+          <button className="relative w-36 h-12 text-white bg-gradient-to-br from-yellow-500 to-pink-600 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+            <span className="absolute inset-1 bg-black opacity-60 rounded-lg"></span>
+            <div className="relative z-10 flex items-center justify-center font-extrabold">
+              Sign up
+            </div>
+          </button>
+          </Link>
+
           <div className="relative">
             <div className="relative w-12 h-12 text-white bg-gradient-to-br from-yellow-500 to-pink-600 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center justify-center">
               <i className="fa-solid fa-cart-shopping"></i>
