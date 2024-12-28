@@ -79,7 +79,7 @@ export const Heroo = () => {
                       }}
                     >
                       <button className="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
-                        Add to Cart
+                        Oder Now
                       </button>
                     </Link>
                   </div>
@@ -101,7 +101,7 @@ export const Heroo = () => {
               ))
             ) : (
               <p className="text-white text-center">
-                No deals available at the moment.
+                Please Wait...
               </p>
             )}
           </div>

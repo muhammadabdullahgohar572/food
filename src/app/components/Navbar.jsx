@@ -42,35 +42,34 @@ export const Navbar = () => {
               </div>
             </button>
           </Link>
-         
-         <Link href="../page/login">
-        
-          <button className="relative w-36 h-14 text-white bg-gradient-to-br from-yellow-500 to-pink-600 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-            <span className="absolute inset-1 bg-black opacity-60 rounded-lg"></span>
-            <div className="relative z-10 flex items-center justify-center font-bold">
-              Login
-            </div>
-          </button>
+
+          <Link href="../page/login">
+            <button className="relative w-36 h-14 text-white bg-gradient-to-br from-yellow-500 to-pink-600 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              <span className="absolute inset-1 bg-black opacity-60 rounded-lg"></span>
+              <div className="relative z-10 flex items-center justify-center font-bold">
+                Login
+              </div>
+            </button>
           </Link>
-                 
+
           <Link href="../page/sigup">
-
-          <button className="relative w-36 h-12 text-white bg-gradient-to-br from-yellow-500 to-pink-600 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-            <span className="absolute inset-1 bg-black opacity-60 rounded-lg"></span>
-            <div className="relative z-10 flex items-center justify-center font-extrabold">
-              Sign up
-            </div>
-          </button>
+            <button className="relative w-36 h-12 text-white bg-gradient-to-br from-yellow-500 to-pink-600 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              <span className="absolute inset-1 bg-black opacity-60 rounded-lg"></span>
+              <div className="relative z-10 flex items-center justify-center font-extrabold">
+                Sign up
+              </div>
+            </button>
           </Link>
-
-          <div className="relative">
-            <div className="relative w-12 h-12 text-white bg-gradient-to-br from-yellow-500 to-pink-600 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center justify-center">
-              <i className="fa-solid fa-cart-shopping"></i>
+          <Link href="../oder">
+            <div className="relative">
+              <div className="relative w-12 h-12 text-white bg-gradient-to-br from-yellow-500 to-pink-600 rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center justify-center">
+                <i className="fa-solid fa-cart-shopping"></i>
+              </div>
+              <div className="absolute left-7 bottom-4 top-0 text-sm font-extrabold text-white p-1 bg-red-600 rounded-full">
+                0
+              </div>
             </div>
-            <div className="absolute left-7 bottom-4 top-0 text-sm font-extrabold text-white p-1 bg-red-600 rounded-full">
-              0
-            </div>
-          </div>
+          </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
