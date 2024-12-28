@@ -74,7 +74,7 @@ export const Heroo = () => {
                           category: deal.category,
                           offer: deal.offer,
                           prices: deal.prices,
-                          image: deal.image,
+                          image: deal.image || "/fallback-image.png", // Default fallback if image is not available
                         },
                       }}
                     >
@@ -96,9 +96,7 @@ export const Heroo = () => {
                 </div>
               ))
             ) : (
-              <p className="text-white text-center">
-                Please Wait...
-              </p>
+              <p className="text-white text-center">Please Wait...</p>
             )}
           </div>
         </div>

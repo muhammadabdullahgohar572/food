@@ -13,9 +13,9 @@ export default function PlaceOrder() {
   const image = searchParams.get("image") || "/placeholder.svg";
 
   // Extract numeric value from prices string (e.g. "Rs. 299" -> 299)
-  const price = parseInt(prices.replace(/[^\d]/g, ''), 10);
+  const price = parseInt(prices.replace(/[^\d]/g, ''), 10) || 0;
 
-  const [Increase, setincrese] = useState(0);
+  const [Increase, setIncrease] = useState(0);
 
   // Calculate total price
   const total = price * Increase + 100; // Rs. 100 delivery charge
@@ -115,7 +115,7 @@ export default function PlaceOrder() {
                 <button
                   onClick={() => {
                     if (Increase > 0) {
-                      setincrese(Increase - 1);
+                      setIncrease(Increase - 1);
                     }
                   }}
                   aria-label="Decrease quantity"
@@ -125,7 +125,7 @@ export default function PlaceOrder() {
                 </button>
                 <span className="w-12 text-center">{Increase}</span>
                 <button
-                  onClick={() => setincrese(Increase + 1)}
+                  onClick={() => setIncrease(Increase + 1)}
                   aria-label="Increase quantity"
                   className="p-2 text-white bg-gray-800 hover:bg-gray-700 rounded-r-md"
                 >
