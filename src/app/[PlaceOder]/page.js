@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+
 export default function PlaceOrder() {
   const [GetData, setData] = useState({
     Tittle: "",
@@ -28,7 +29,13 @@ export default function PlaceOrder() {
     const Rates = total; // Total value from the price calculation
     const Quntity = Increase; // Quantity from state
 
-    if (!username || !Phone_Number || !location || Quntity === 0 || Rates === 0) {
+    if (
+      !username ||
+      !Phone_Number ||
+      !location ||
+      Quntity === 0 ||
+      Rates === 0
+    ) {
       alert("Please fill all the required fields.");
       return;
     }
@@ -46,13 +53,16 @@ export default function PlaceOrder() {
     console.log("Payload being sent:", JSON.stringify(payload, null, 2)); // Debugging payload
 
     try {
-      const response = await fetch("https://foodbackhand.vercel.app/anyoderbook", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const response = await fetch(
+        "https://foodbackhand.vercel.app/anyoderbook",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (!response.ok) {
         const responseText = await response.text();
@@ -68,21 +78,20 @@ export default function PlaceOrder() {
 
       const result = await response.json();
       console.log("API Response:", result);
-      localStorage.setItem("Oder",JSON.stringify(result))
-      alert("Order placed successfully!");
-      router.push("/")
 
+      // Save multiple orders to localStorage
+      const existingOrders = JSON.parse(localStorage.getItem("Oder")) || [];
+      existingOrders.push({ ...result, image });
+      localStorage.setItem("Oder", JSON.stringify(existingOrders)); // Save all orders
+
+      alert("Order placed successfully!");
+      router.push("../oder");
     } catch (error) {
       console.error("Error sending order:", error.message);
       alert(`Failed to place the order: ${error.message}`);
     }
   };
 
-
-
-  useEffect(()=>{
-    DataSendApi()
-  },[])
   return (
     <div className="min-h-screen md:mt-[12%] mt-[35%] ssml:mt-[17%] bg-black text-white p-4">
       <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">

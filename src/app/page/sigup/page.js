@@ -5,11 +5,11 @@ import Link from 'next/link';
 import { useRouter } from "next/navigation";
 
 const Signup = () => {
-  const [name, setName] = useState('');
+  const [username, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [location, setLocation] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [Phone_Number, setPhoneNumber] = useState('');
   const router = useRouter(); // Use the router from next/navigation
 
   const handleSubmit = async (event) => {
@@ -19,7 +19,7 @@ const Signup = () => {
       const response = await fetch('https://foodbackhand.vercel.app/signup', { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password, location, phoneNumber }) 
+        body: JSON.stringify({ username, email, password, location, Phone_Number }) 
       });
 
       if (!response.ok) {
@@ -49,7 +49,7 @@ const Signup = () => {
             <input
               type="text"
               id="name"
-              value={name}
+              value={username}
               onChange={(e) => setName(e.target.value)}
               className="w-full border border-gray-300 rounded-md p-2"
             />
@@ -97,7 +97,7 @@ const Signup = () => {
             <input
               type="tel" 
               id="phoneNumber"
-              value={phoneNumber}
+              value={Phone_Number}
               onChange={(e) => setPhoneNumber(e.target.value)}
               className="w-full border border-gray-300 rounded-md p-2"
             />
