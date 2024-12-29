@@ -1,61 +1,59 @@
 "use client";
-import React, { useState } from "react";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 const ContactUs = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     email: "",
-    phone: "",
     message: "",
+    phoneNumber: "",
   });
+  const router = useRouter(); // Use the router from next/navigation
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevData) => ({
+      ...prevData,
       [name]: value,
-    });
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Prepare the data to be sent
-    const requestData = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      message: formData.message,
-    };
+    setLoading(true);
+    setError(null);
+    setSuccess(false);
 
     try {
-      // Send POST request to the backend
-      const response = await fetch(
-        "https://foodbackhand.vercel.app/contectus",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(requestData),
-        }
-      );
+      const response = await fetch("https://foodbackhand.vercel.app/contectus", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          email: formData.email,
+          message: formData.message,
+          PhoneNumber: formData.phoneNumber,
+        }),
+      });
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Message sent successfully:", data);
-        // You can display a success message or clear the form here
-        alert("Message sent successfully!");
-        setFormData({ name: "", email: "", phone: "", message: "" }); // Clear form fields
-      } else {
-        console.error("Error submitting form:", response);
-        // Handle error response (e.g., display an error message)
-        alert("Failed to send message. Please try again.");
+      if (!response.ok) {
+        throw new Error("Something went wrong, please try again.");
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      // Handle network error or other issues
-      alert("Network error. Please try again later.");
+
+      setSuccess(true);
+      setFormData({ username: "", email: "", message: "", phoneNumber: "" });
+      alert("Your Message Send ")
+      router.push("/");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -73,16 +71,24 @@ const ContactUs = () => {
             We'd love to hear from you!
           </h2>
 
+          
+
+          {error && (
+            <div className="mb-6 text-red-500">
+              <p>{error}</p>
+            </div>
+          )}
+
           <form onSubmit={handleSubmit}>
             <div className="mb-6">
-              <label htmlFor="name" className="block text-lg mb-2">
+              <label htmlFor="username" className="block text-lg mb-2">
                 Your Name:
               </label>
               <input
                 type="text"
-                id="name"
-                name="name"
-                value={formData.name}
+                id="username"
+                name="username"
+                value={formData.username}
                 onChange={handleChange}
                 className="w-full p-3 bg-black text-white border-2 border-yellow-400 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:bg-white focus:text-black transition duration-300"
                 required
@@ -105,19 +111,16 @@ const ContactUs = () => {
             </div>
 
             <div className="mb-4">
-              <label
-                className="block text-sm font-medium text-gray-700"
-                htmlFor="phone"
-              >
-                Phone Number
+              <label className="block text-sm font-medium text-gray-700" htmlFor="phoneNumber">
+                Phone Number:
               </label>
               <input
                 type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
+                id="phoneNumber"
+                name="phoneNumber"
+                value={formData.phoneNumber}
                 onChange={handleChange}
-                pattern="03[0-9]{9}" // This pattern ensures the phone number starts with 03 and has 9 digits
+                pattern="03[0-9]{9}"
                 className="w-full p-3 bg-black text-white border-2 border-yellow-400 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:bg-white focus:text-black transition duration-300"
                 placeholder="03xxxxxxxx"
                 required
@@ -142,8 +145,9 @@ const ContactUs = () => {
             <button
               type="submit"
               className="w-full py-3 bg-yellow-400 text-black font-bold rounded-md hover:bg-blue-600  hover:text-white transition duration-300"
+              disabled={loading}
             >
-              Send Message
+              {loading ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>
