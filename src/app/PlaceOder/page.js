@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { Suspense } from "react";  // Import Suspense
+import { Suspense } from "react"; // Import Suspense
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { useState } from "react";
@@ -14,7 +14,7 @@ export default function PlaceOrder() {
   const image = searchParams.get("image") || "/placeholder.svg";
 
   // Extract numeric value from prices string (e.g. "Rs. 299" -> 299)
-  const price = parseInt(prices.replace(/[^\d]/g, ''), 10);
+  const price = parseInt(prices.replace(/[^\d]/g, ""), 10);
 
   const [Increase, setincrese] = useState(0);
 
@@ -22,7 +22,9 @@ export default function PlaceOrder() {
   const total = price * Increase + 100; // Rs. 100 delivery charge
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>  {/* Suspense Boundary */}
+    <Suspense fallback={<div>Loading...</div>}>
+      {" "}
+      {/* Suspense Boundary */}
       <div className="min-h-screen md:mt-[12%] mt-[35%] ssml:mt-[17%] bg-black text-white p-4">
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
           {/* Left Image Section */}

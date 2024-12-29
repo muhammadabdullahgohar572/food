@@ -74,19 +74,23 @@ export const Heroo = () => {
                           category: deal.category,
                           offer: deal.offer,
                           prices: deal.prices,
-                          image: deal.image || "/fallback-image.png", // Default fallback if image is not available
+                          image: deal.image,
                         },
                       }}
                     >
                       <button className="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
-                        Order Now
+                        Add to Cart
                       </button>
                     </Link>
                   </div>
 
                   <div className="mt-4 md:mt-0">
                     <Image
-                      src={deal.image?.startsWith("http") ? deal.image : "/fallback-image.png"}
+                      src={
+                        deal.image?.startsWith("http")
+                          ? deal.image
+                          : "/fallback-image.png"
+                      }
                       alt={`Image showcasing ${deal.title}`}
                       width={100}
                       height={100}
@@ -96,7 +100,9 @@ export const Heroo = () => {
                 </div>
               ))
             ) : (
-              <p className="text-white text-center">Please Wait...</p>
+              <p className="text-white text-center">
+                No deals available at the moment.
+              </p>
             )}
           </div>
         </div>
