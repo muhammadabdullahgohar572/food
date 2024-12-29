@@ -65,16 +65,15 @@ export const Heroo = () => {
                     <p className="text-gray-400">{deal.category}</p>
                     <p className="text-gray-400">{deal.offer}</p>
                     <p className="text-white font-bold mt-2">{deal.prices}</p>
-
                     <Link
                       href={{
                         pathname: `/PlaceOder`,
                         query: {
-                          title: deal.title,
-                          category: deal.category,
+                          image: deal.image,
                           offer: deal.offer,
                           prices: deal.prices,
-                          image: deal.image,
+                          title: deal.title,
+                          category: deal.category,
                         },
                       }}
                     >
