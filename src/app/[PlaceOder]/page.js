@@ -15,7 +15,7 @@ export default function PlaceOrder() {
   const total = (parseFloat(prices) || 0) * Increase + 100;
 
   return (
-    <div className="min-h-screen bg-black text-white p-4">
+    <div className="min-h-screen md:mt-[12%] mt-[35%] ssml:mt-[17%] bg-black text-white p-4">
       <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
         <div className="relative">
           <Image
